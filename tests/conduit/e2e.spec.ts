@@ -1,6 +1,6 @@
-import { test } from "../fixtures/index";
+import { test } from "../../fixtures/index";
 import { faker } from "@faker-js/faker";
-import { deletionIds } from "../fixtures/index";
+import { deletionIds } from "../../fixtures/index";
 
 test("Check favorited article is displayed in the user profile", async ({ app}) => {
   //Actions

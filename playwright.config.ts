@@ -12,7 +12,6 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -45,14 +44,15 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         storageState: "./data/auth/authFile.json",
       },
-      
+      testDir: './tests/conduit',
       dependencies: ["setup"],
     },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'hw',
+      use: {  ...devices['Desktop Chrome'], },
+      testDir: "./tests/hw"
+    },
 
     // {
     //   name: 'webkit',

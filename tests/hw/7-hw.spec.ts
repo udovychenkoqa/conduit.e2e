@@ -45,6 +45,7 @@ test("infinity values", async () => {
 });
 
 // Помилки
+
 test("non-number", async () => {
     expect(() => isPositive("2")).toThrowError("pls use number to check if it positive");
     expect(() => isPositive(null)).toThrowError("pls use number to check if it positive");

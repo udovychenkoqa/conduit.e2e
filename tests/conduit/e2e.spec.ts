@@ -89,5 +89,5 @@ test("Check article is deleted", async ({ app }) => {
   const statusCode = await app.article.getResponseAfterOpen(`/articles/${slug}`);
 
   //Assert
-  expect(statusCode).toEqual(204);
+  expect(statusCode).toEqual(404);
 });

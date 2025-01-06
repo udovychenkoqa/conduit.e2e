@@ -2,7 +2,7 @@ import { PageHolder } from "./base/pageHolder";
 import { API } from "../api/api";
 import { Home } from "./pages/home/page";
 import { SignIn } from "./pages/signin";
-import { UserInfo } from "./pages/info/page"
+import { UserInfo } from "./pages/profile/page"
 import { Editor } from "./pages/editor/page";
 import { Article } from "../app/pages/article/page";
 import { step } from "../helpers/step";

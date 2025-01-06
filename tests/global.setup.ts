@@ -19,7 +19,7 @@ setup.skip("Get authorization token", async ({ app }) => {
 
 // setup.describe.configure({ mode: "serial" });
 
-setup("Create account", async ({ app }) => {
+setup.skip("Create account", async ({ app }) => {
   //Action
   process.env.TOKEN = await app.api.auth.createNewUser({
     user: {

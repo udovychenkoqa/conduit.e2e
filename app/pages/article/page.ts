@@ -18,4 +18,11 @@ export class Article extends BasePage {
     async expectLoaded(message = 'Expected page to be loaded'): Promise<void> {
         await expect(this.nickname, message).toBeVisible();
     }
+    @step()
+    async getResponseAfterOpen(path?: string) {
+        const responsePromise = this.page.waitForResponse(`https://conduit-api.learnwebdriverio.com/api${path}`);
+        await this.open(path);
+        const response = await responsePromise;
+        return response.status()
+    }
 }

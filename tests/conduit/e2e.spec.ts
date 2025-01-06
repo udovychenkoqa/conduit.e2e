@@ -1,4 +1,5 @@
 import { test } from "../../fixtures/index";
+import { expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
 import { deletionIds } from "../../fixtures/index";
 
@@ -85,9 +86,8 @@ test("Check article is deleted", async ({ app }) => {
   await app.home.header.openProfile();
   await app.userInfo.clickArticleLink();
   await app.article.banner.clickDeleteButton();
-  await app.article.open(`/articles/${slug}`);
-
+  const statusCode = await app.article.getResponseAfterOpen(`/articles/${slug}`);
 
   //Assert
-  await app.article.banner.expectBannerToBeHidden();
+  expect(statusCode).toEqual(204);
 });

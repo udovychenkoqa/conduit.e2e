@@ -1,7 +1,6 @@
 import { RequestHolder } from "../requestHolder.ts";
 import type { ArticleCreateRequest } from "../models/ArticleCreateRequest.ts";
 
-
 export class ArticleController extends RequestHolder {
   async createArticle(data: ArticleCreateRequest) {
     const response = await this.request.post(
@@ -13,8 +12,19 @@ export class ArticleController extends RequestHolder {
         },
       }
     );
-    const jsonResponse = await response.json()
-    return jsonResponse.article.slug
-    
-}
+    const jsonResponse = await response.json();
+    return jsonResponse.article.slug;
+  }
+
+  async getArticleDetails(slug: string) {
+    const response = await this.request.get(
+      `https://conduit-api.learnwebdriverio.com/api/articles/${slug}`,
+      {
+        headers: {
+          Authorization: `Token ${process.env.TOKEN}`,
+        },
+      }
+    );
+    return response.status()
+  }
 }

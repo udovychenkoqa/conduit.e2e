@@ -1,10 +1,10 @@
 import { expect } from "@playwright/test";
-import  { BasePage } from '../../base/basePage';
-import { Header } from "../../components/header";
-import { Form } from "./form";
+import  { AbstractPage} from '../../abstracts/abstract.page';
+import { Header } from "../../components/header.component";
+import { Form } from "./form.component";
 import { step } from "../../../helpers/step";
 
-export class Editor extends BasePage {
+export class Editor extends AbstractPage {
     public pagePath = '/';
     
     public header = new Header(this.page);

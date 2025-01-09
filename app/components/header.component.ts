@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { BaseComponent } from "../base/baseComponent";
+import { AbstractComponent } from "../abstracts/abstract.component";
 import { step } from "../../helpers/step";
 
-export class Header extends BaseComponent {
+export class Header extends AbstractComponent {
     private root = this.page.locator("[data-qa-id='site-header']")
     private homeLink = this.root.locator("[data-qa-id='site-nav'] .nav-item", { hasText: "Home" })
     private signinLink = this.root.locator("[data-qa-id='site-nav'] .nav-item", { hasText: "Sign in" })

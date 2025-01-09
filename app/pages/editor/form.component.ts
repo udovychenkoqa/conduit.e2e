@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { BaseComponent } from "../../base/baseComponent";
+import { AbstractComponent } from "../../abstracts/abstract.component";
 import { step } from "../../../helpers/step";
 
-export class Form extends BaseComponent {
+export class Form extends AbstractComponent {
   private root = this.page.locator("form ");
   private titleInput = this.root.locator("[data-qa-id='editor-title']");
   private descriptionInput = this.root.locator(

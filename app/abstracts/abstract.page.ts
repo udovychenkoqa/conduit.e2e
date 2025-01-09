@@ -1,6 +1,6 @@
 import { step } from "../../helpers/step"
-import { BaseComponent} from "./baseComponent"
-export abstract class BasePage extends BaseComponent {
+import { AbstractComponent } from "./abstract.component"
+export abstract class AbstractPage extends AbstractComponent  {
 
     public abstract pagePath: string;
 

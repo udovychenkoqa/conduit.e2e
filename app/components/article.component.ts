@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { BaseComponent } from "../base/baseComponent";
+import { AbstractComponent } from "../abstracts/abstract.component";
 import { step } from "../../helpers/step";
 
-export class Article extends BaseComponent {
+export class Article extends AbstractComponent {
   private root = this.page.locator("[data-qa-type='article-list']")
   private article = this.root.locator("[data-qa-type='article-preview']");
   private title = this.article.locator("[data-qa-type='preview-title']");
@@ -18,12 +18,12 @@ export class Article extends BaseComponent {
 
   @step()
   async clickArticleAt({ number: number }) {
-    await this.isLoaded();
+    await this.expectLoaded();
     await this.articleButton.nth(number - 1).click();
   }
   @step()
   async getArticleTitleAt({ number: number }) {
-    await this.isLoaded();
+    await this.expectLoaded();
     return await this.title.nth(number - 1).textContent() as string
   }
 
@@ -41,12 +41,12 @@ export class Article extends BaseComponent {
   //Assert
   @step()
   async expectArticleListToHaveCount({ number: number }) {
-    await this.isLoaded();
+    await this.expectLoaded();
     await expect(this.article).toHaveCount(number);
   }
   @step()
   async expectNewArticleToHaveTitle( data: string ) {
-    await this.isLoaded();
+    await this.expectLoaded();
     await expect(this.title.first()).toHaveText(data);
   }
 }

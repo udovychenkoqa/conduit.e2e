@@ -1,11 +1,11 @@
 import { expect } from "@playwright/test";
-import  { BasePage } from '../../base/basePage';
-import { Header } from "../../components/header";
-import { Article } from "../../components/article";
-import { Tabs } from "./tabs";
+import  { AbstractPage } from '../../abstracts/abstract.page';
+import { Header } from "../../components/header.component";
+import { Article } from "../../components/article.component";
+import { Tabs } from "./tabs.component";
 import { step } from "../../../helpers/step";
 
-export class UserInfo extends BasePage {
+export class UserInfo extends AbstractPage {
     public pagePath = '/';
     
     public header = new Header(this.page);

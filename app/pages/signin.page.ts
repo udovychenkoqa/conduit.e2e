@@ -1,9 +1,9 @@
 import { expect } from "@playwright/test";
-import { BasePage } from "../base/basePage";
-import { Header } from "../components/header";
+import { AbstractPage } from "../abstracts/abstract.page";
+import { Header } from "../components/header.component";
 import { step } from "../../helpers/step";
 
-export class SignIn extends BasePage {
+export class SignIn extends AbstractPage{
     public header = new Header(this.page);
     public pagePath = '/login'
 

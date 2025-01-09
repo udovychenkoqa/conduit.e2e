@@ -11,6 +11,7 @@ export let deletionIds: Array<string> = [];
 export const test = base.extend<{ app: Application }>({
   app: async ({ page }, use) => {
     const app = new Application(page);
+    process.env.TOKEN = ""
     process.env.TOKEN = await app.api.auth.createNewUser({
       user: {
         email: email,

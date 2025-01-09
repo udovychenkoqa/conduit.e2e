@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { BaseComponent } from "../../base/baseComponent";
+import { AbstractComponent } from "../../abstracts/abstract.component";
 import { step } from "../../../helpers/step";
 
-export class Tabs extends BaseComponent {
+export class Tabs extends AbstractComponent {
     private root = this.page.locator("[data-qa-id='profile-tabs']")
     private tabMyArticles = this.page.locator("[data-qa-id='profile-tabs'] a", { hasText: "My Articles" })
     private tabFavoritedArticles = this.page.locator("[data-qa-id='profile-tabs'] a", { hasText: "Favorited Articles" })

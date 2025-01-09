@@ -1,8 +1,8 @@
 import { expect } from "@playwright/test";
-import { BaseComponent } from "../../base/baseComponent";
+import { AbstractComponent } from "../../abstracts/abstract.component";
 import { step } from "../../../helpers/step";
 
-export class Banner extends BaseComponent {
+export class Banner extends AbstractComponent{
   private root = this.page.locator(".banner")
   private title = this.root.locator("[data-qa-id='article-title']");
   private metaData = this.root.locator(".article-meta");
@@ -16,13 +16,13 @@ export class Banner extends BaseComponent {
 
   @step()
   async clickDeleteButton() {
-    await this.isLoaded();
+    await this.expectLoaded();
     await this.buttonDelete.click();
   }
 
   @step()
   async clickEditLink() {
-    await this.isLoaded();
+    await this.expectLoaded();
     await this.linkEdit.click();
   }
 
@@ -31,7 +31,7 @@ export class Banner extends BaseComponent {
 
   @step()
   async expectArticleToHaveTitle( data: string ) {
-    await this.isLoaded();
+    await this.expectLoaded();
     await expect(this.title).toHaveText(data);
   }
   

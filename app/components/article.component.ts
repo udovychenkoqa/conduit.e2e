@@ -17,9 +17,9 @@ export class Article extends AbstractComponent {
   }
 
   @step()
-  async clickArticleAt({ number: number }) {
+  async clickArticleLinkAt({ number: number }) {
     await this.expectLoaded();
-    await this.articleButton.nth(number - 1).click();
+    await this.link.nth(number - 1).click();
   }
   @step()
   async getArticleTitleAt({ number: number }) {
@@ -28,7 +28,7 @@ export class Article extends AbstractComponent {
   }
 
   @step()
-  async getSlugFromResponseAfterClickArticleAt({ number: number }) {
+  async addArticleToFavoriteAt({ number: number }) {
     const responsePromise = this.page.waitForResponse((response) =>
       response.url().includes("/favorite")
     );

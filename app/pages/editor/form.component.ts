@@ -34,7 +34,7 @@ export class Form extends AbstractComponent {
   }
 
   @step()
-  async getSlugFromResponseAfterClickButtonPublish() {
+  async clickPublishButton() {
     await this.expectLoaded();
     const responsePromise = this.page.waitForResponse((response) =>
       response.url().includes("/api/articles")

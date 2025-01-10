@@ -1,24 +1,21 @@
 import { test } from "../../fixtures/index";
 import { expect } from "@playwright/test";
 import { faker } from "@faker-js/faker";
-import { deletionIds } from "../../fixtures/index";
+
 
 test("Check favorited article is displayed in the user profile", async ({
   app,
 }) => {
   //Actions
   await app.home.open();
-  const slug = await app.home.article.getSlugFromResponseAfterClickArticleAt({
-    number: 1,
-  });
+  await app.home.article.addArticleToFavoriteAt({ number: 1 });
   let title = await app.home.article.getArticleTitleAt({ number: 1 });
   await app.home.header.openProfile();
-  await app.userInfo.tabs.clickFavoritedArticlesTab();
-  deletionIds.push(slug);
+  await app.profile.tabs.clickFavoritedArticlesTab();
 
   //Assert
-  await app.userInfo.article.expectNewArticleToHaveTitle(title);
-  await app.userInfo.article.expectArticleListToHaveCount({ number: 1 });
+  await app.profile.article.expectNewArticleToHaveTitle(title);
+  await app.profile.article.expectArticleListToHaveCount({ number: 1 });
 });
 
 test("Check new article creation and its display in the global article list ", async ({
@@ -35,14 +32,11 @@ test("Check new article creation and its display in the global article list ", a
     bodyInput: faker.word.words({ count: { min: 5, max: 10 } }),
     tagsInput: faker.word.words(),
   });
-  const slug =
-    await app.editor.form.getSlugFromResponseAfterClickButtonPublish();
+  await app.editor.form.clickPublishButton();
   await app.editor.header.clickBrand();
-  deletionIds.push(slug);
 
   //Assert
-  await app.home.article.expectNewArticleToHaveTitle(title);
-  // await app.home.article.expectArticleListToHaveCount({ number: 3 });
+  await app.home.article.expectNewArticleToHaveTitle(title);;
 });
 
 test("Check new article creation and its display in the my article list", async ({
@@ -64,8 +58,8 @@ test("Check new article creation and its display in the my article list", async 
   await app.home.header.openProfile();
 
   //Assert
-  await app.userInfo.article.expectNewArticleToHaveTitle(title);
-  await app.userInfo.article.expectArticleListToHaveCount({ number: 1 });
+  await app.profile.article.expectNewArticleToHaveTitle(title);
+  await app.profile.article.expectArticleListToHaveCount({ number: 1 });
 });
 
 test("Check article is deleted", async ({ app }) => {
@@ -82,7 +76,7 @@ test("Check article is deleted", async ({ app }) => {
     },
   });
   await app.home.header.openProfile();
-  await app.userInfo.clickArticleLink();
+  await app.profile.article.clickArticleLinkAt({ number: 1});
   await app.article.banner.clickDeleteButton();
   const statusCode = await app.article.getResponseAfterOpen(`/articles/${slug}`);
 

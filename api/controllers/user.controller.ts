@@ -1,4 +1,4 @@
-import { RequestHolder } from "../requestHolder.ts";
+import { RequestHolder } from "../abstract.ts";
 import { request , expect } from "@playwright/test";
 
 

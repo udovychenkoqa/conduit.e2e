@@ -1,6 +1,6 @@
-import { RequestHolder } from "../requestHolder.ts";
-import type { UserCreateRequest } from "../models/userCreateRequest.ts";
-import type { LoginRequest } from "../models/loginRequest.ts";
+import { RequestHolder } from "../abstract.ts";
+import type { UserCreateRequest } from "../models/userCreateRequest.model.ts";
+import type { LoginRequest } from "../models/loginRequest.model.ts";
 
 export class AuthController extends RequestHolder {
   async getAuthToken(data: LoginRequest) {

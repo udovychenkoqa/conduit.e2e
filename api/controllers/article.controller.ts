@@ -1,5 +1,5 @@
-import { RequestHolder } from "../requestHolder.ts";
-import type { ArticleCreateRequest } from "../models/ArticleCreateRequest.ts";
+import { RequestHolder } from "../abstract.ts";
+import type { ArticleCreateRequest } from "../models/articleCreateRequest.model.ts";
 
 export class ArticleController extends RequestHolder {
   async createArticle(data: ArticleCreateRequest) {

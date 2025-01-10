@@ -1,5 +1,5 @@
 import { PageHolder } from "./abstracts/abstract";
-import { API } from "../api/api";
+import { API } from "../api/index";
 import { Home } from "./pages/home/home.page";
 import { SignIn } from "./pages/signin.page";
 import { Profile } from "./pages/profile/profile.page"

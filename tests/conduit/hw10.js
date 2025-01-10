@@ -24,17 +24,17 @@ function cloneArray(arr) {
   return cloneArr;
 }
 
-//function cloneArray(arr) {
-//     return arr.slice();
-// }
+function cloneArray(arr) {
+  return arr.slice();
+}
 
-// function cloneArray(arr) {
-//     return [...arr];
-// }
+function cloneArray(arr) {
+  return [...arr];
+}
 
-// function cloneArrayDeep(arr) {
-//     return JSON.parse(JSON.stringify(arr));
-// }
+function cloneArrayDeep(arr) {
+  return JSON.parse(JSON.stringify(arr));
+}
 
 console.log(cloneArray([1, 2, 4, 0])); // [1, 2, 4, 0]
 console.log(cloneArray([1, 2, [4, 0]])); // [1, 2, [4, 0]]
@@ -59,12 +59,34 @@ console.log(first([7, 9, 0, -2], 3)); // [7, 9, 0]
 // ✏️ Напиши функцію для отримання останніх n елементів масиву.
 // Тестові дані:
 
-function last(arr, n = 1) {
-  return arr.slice(-n);
+function last(arr, n) {
+  if (n === undefined) return arr[arr.length - 1];
+  const newArr = [];
+  let count = 0;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (count < n) {
+      newArr.unshift(arr[i]);
+      count++;
+    }
+  }
+  return newArr;
 }
 
-console.log(last([7, 9, 0, -2])); // -2
-console.log(last([7, 9, 0, -2], 3)); // [9, 0, -2]
+console.log(last([7, 9, 0, -2])); //-2
+console.log(last([7, 9, 0, -2], 4)); // [9, 0, -2]
+
+// 5️⃣ Об’єднання елементів масиву
+// ✏️ Напиши програму, що об'єднує елементи масиву у строку.   (гугліть як це зробити)
+// Приклад:
+
+const myColor = ["Red", "Green", "White", "Black"];
+function join(arr, separator) {
+  const result = arr.join(separator);
+  return result;
+}
+console.log(join(myColor, "+"));
+// "Red,Green,White,Black"
+// "Red+Green+White+Black"
 
 // 6️⃣ Дефіси між парними числами
 // ✏️ Програма, що додає дефіси між парними числами.   (завдання із зірочкою ⭐️)
@@ -86,5 +108,49 @@ function pairNumber(number) {
   return stringNumber;
 }
 
-console.log(pairNumber("025468"));
+console.log(pairNumber(25468));
+
+// 7️⃣ Сортування масиву
+// ✏️ Напиши програму для сортування чисел у масиві.   (завдання із зірочкою ⭐️)
+// Приклад:
+
+const arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+// Вивід: -4,-3,1,2,3,5,6,7,8
+function sort(arr) {
+  const result = [];
+  while (arr.length > 0) {
+    let min = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+    result.push(min);
+    arr.splice(arr.indexOf(min), 1);
+  }
+  return result;
+}
+console.log(sort(arr1));
+
+const arr2 = [-3, 8, 7, 6, 5, -4, 3, 2, 1];
+function sort2(arr) {
+  const result = arr.sort((a,b )=> a - b)
+  return result
+}
+
+console.log(sort2(arr2));
+
+
+// 9️⃣ Сума чисел від 1 до 100
+// ✏️ Напиши програму, яка знайде суму чисел від 1 до 100.
+
+function sum100(){
+  let sum = 0
+  for(let i = 0; i <= 100; i++){
+    sum += i
+  }
+  return sum
+}
+console.log(sum100())
+
 

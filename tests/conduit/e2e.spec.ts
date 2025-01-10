@@ -52,7 +52,7 @@ test("Check new article creation and its display in the my article list", async 
 
   //Actions
   await app.home.open();
-  const slug = await app.api.article.createArticle({
+  await app.api.article.createArticle({
     article: {
       author: {},
       title: title,
@@ -62,7 +62,6 @@ test("Check new article creation and its display in the my article list", async 
     },
   });
   await app.home.header.openProfile();
-  deletionIds.push(slug);
 
   //Assert
   await app.userInfo.article.expectNewArticleToHaveTitle(title);
@@ -82,7 +81,6 @@ test("Check article is deleted", async ({ app }) => {
       tagList: [],
     },
   });
-  deletionIds.push(slug);
   await app.home.header.openProfile();
   await app.userInfo.clickArticleLink();
   await app.article.banner.clickDeleteButton();

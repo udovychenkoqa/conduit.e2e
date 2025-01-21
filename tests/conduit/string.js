@@ -64,36 +64,131 @@
 // console.log(string_parameterize("Robin Singh from USA."));
 // "robin-singh-from-usa"
 
-function stringParameterize(word) {
-  let result = "";
-  for (let i = 0; i < word.length; i++) {
-    result += word[i].toLowerCase().trim();
-    if (word[i] === " ") {
-      result += "-";
-    }
-  }
-  return result;
-}
+// function stringParameterize(word) {
+//   let result = "";
+//   for (let i = 0; i < word.length; i++) {
+//     result += word[i].toLowerCase().trim();
+//     if (word[i] === " ") {
+//       result += "-";
+//     }
+//   }
+//   return result;
+// }
 
-function stringParameterize1(word) {
-  const alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const alphabetLower = "abcdefghijklmnopqrstuvwxyz";
-  let result = "";
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === " ") {
-      result += "-";
-    } else if (word[i] === ".") {
-      result += "";
-    } else {
-      let lowerChar = word[i]
-      for (let k = 0; k < alphabetUpper.length; k++) {
-        if (word[i] === alphabetUpper[k]) {
-           lowerChar = alphabetLower[k];
-        }
-      }
-      result += lowerChar
-    }
-  }
-  return result;
-}
-console.log(stringParameterize1("Robin Singh from USA."));
+// function stringParameterize1(word) {
+//   const alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   const alphabetLower = "abcdefghijklmnopqrstuvwxyz";
+//   let result = "";
+//   for (let i = 0; i < word.length; i++) {
+//     if (word[i] === " ") {
+//       result += "-";
+//     } else if (word[i] === ".") {
+//       result += "";
+//     } else {
+//       let lowerChar = word[i]
+//       for (let k = 0; k < alphabetUpper.length; k++) {
+//         if (word[i] === alphabetUpper[k]) {
+//            lowerChar = alphabetLower[k];
+//         }
+//       }
+//       result += lowerChar
+//     }
+//   }
+//   return result;
+// }
+// console.log(stringParameterize1("Robin Singh from USA."));
+
+
+// №5 Capitalize Each Word
+// Write a JavaScript function to capitalize the first letter of each word in a string.
+// Test Data :
+// console.log(capitalize_Words('js string exercises'));
+// "Js String Exercises
+// function capitalize_Words(string){
+//   const alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   const alphabetLower = "abcdefghijklmnopqrstuvwxyz";
+//   let newString = ""
+//   for(let i = 0; i < string.length; i++){
+//       if(i === 0 || string[i - 1] === " "){
+//           chart = string[i]
+//           for(let k = 0; k < alphabetLower.length; k++ ){
+//               if(string[i ] ===  alphabetLower[k]){
+//                   chart = alphabetUpper[k]
+//               }
+//           }
+//           newString += chart
+//       }else{
+//           newString += string[i]
+//       }  
+//   }
+//   return newString
+// }
+
+// function capitalize_Words_Methods(string){
+//   return string.split(" ").map(chart => chart[0].toUpperCase() + chart.slice(1)).join(" ")
+// }
+
+
+// console.log(capitalize_Words('js string exercises'));
+// console.log(capitalize_Words_Methods('js string exercises'));
+
+// №7 Repeat String
+
+// Write a JavaScript function to concatenate a given string n times (default is 1).
+// Test Data :
+// console.log(repeat('Ha!'));
+// console.log(repeat('Ha!',2));
+// console.log(repeat('Ha!',3));
+// "Ha!"
+// "Ha!Ha!"
+// "Ha!Ha!Ha!"
+
+// function repeat(string, n = 1){
+//     let result = ""
+//     for(let i = 0; i < n; i++){
+//         result += string
+//     }
+//     return result
+// }
+
+// console.log(repeat("Ha!"))
+
+
+// №9  Uncamelize String
+
+// Write a JavaScript function to uncommelize a string.
+// Test Data :
+// console.log(uncamelize('helloWorld'));
+// console.log(uncamelize('helloWorld','-'));
+// console.log(uncamelize('helloWorld','_'));
+// "hello world"
+// "hello-world"
+// "hello_world"
+
+// function uncamelize(string, symbol = " ") {
+//     let result = "";
+//     const alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//     for (let i = 0; i < string.length; i++) {
+//       for (let k = 0; k < alphabetUpper.length; k++) {
+//         if (string[i] === alphabetUpper[k]) {
+//           result += symbol;
+//         }
+//       }
+//       result += string[i];
+//     }
+//     return result;
+//   }
+//   console.log(uncamelize("helloWorld", "_"));
+  
+//   function uncamelizeMethod(string, symbol = " ") {
+//     let result = "";
+//     string.split("").forEach((element) => {
+//       if (element === element.toUpperCase()) {
+//         result += symbol;
+//         result += element;
+//       } else result += element;
+//     });
+//     return result;
+//   }
+//   console.log(uncamelizeMethod("helloWorld", "_"));
+  

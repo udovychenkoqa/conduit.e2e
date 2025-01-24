@@ -180,15 +180,109 @@
 //   }
 //   console.log(uncamelize("helloWorld", "_"));
   
-//   function uncamelizeMethod(string, symbol = " ") {
-//     let result = "";
-//     string.split("").forEach((element) => {
-//       if (element === element.toUpperCase()) {
-//         result += symbol;
-//         result += element;
-//       } else result += element;
-//     });
-//     return result;
+// function uncamelizeMethod(string, symbol = " ") {
+//     return string
+//       .split("")
+//       .map(char => char >= "A" && char <= "Z" ? symbol + char : char)
+//       .join("");
+// }
+
+// function uncamelizeMethod(string, symbol = " ") {
+//     return string
+//       .split("")
+//       .map(char => char === char.toUpperCase() ? symbol + char : char)
+//       .join("");
 //   }
 //   console.log(uncamelizeMethod("helloWorld", "_"));
   
+
+// Write function stringAsteriscTask(str), where str will be a string of alphanumeric characters with a single asterisk character splitting the string evenly into two separate strings.
+
+// The string will always split evenly with the asterisk in the center. Your goal is to return a new string by pairing up the characters in the corresponding locations in both sub-strings. 
+
+// For example: if str is
+// "abc1*kyoo" then your program should return the string akbyco1o because a pairs with k, b pairs with y, etc.
+
+// Input: "aaa*bbb"
+// Output: ababab
+
+// function stringAsteriscTask(str){
+//     const firstPart = str.split("*")[0]
+//     const secondPart = str.split("*")[1]
+//     let result = ""
+//     for(let i = 0; i < firstPart.length; i++){
+//         result += firstPart[i] + secondPart[i]
+//     }
+//     return result
+// }
+// function stringAsteriscTask(str){
+//     const firstPart = str.split("*")[0].split("")
+//     const secondPart = str.split("*")[1].split("")
+//     return firstPart.map((el, index) => el + secondPart[index]).join("")
+// }
+
+// console.log(stringAsteriscTask("abc1*kyoo"))
+
+/**
+ * "2[ab]" -> "abab"
+"3[c]ker" -> "cccker"
+"abcdef" -> "abcdef"
+ */
+// function stringTask(str){
+//     const count1 = Number(str.split("")[0])
+//     const count2 = Number(str.split("")[1])
+//     const result = str
+//     if(!isNaN(count1) && isNaN(count2)){
+//         const index = str.indexOf("]")
+//         const part = str.slice(1, index).split("").filter(el => el >= "a" && el <= "z").join("")
+//         const secondPart = str.slice(index + 1)
+//         let newResult = ""
+//         for(i = 0; i < count1; i++ ){
+//             newResult += part
+//         }
+//         return newResult + secondPart
+        
+//     }else if(!isNaN(count1) && !isNaN(count2)){
+//         const counter = Number((count1.toString() + count2.toString()))
+//         console.log(counter)
+//         const index = str.indexOf("]")
+//         const part = str.slice(1, index).split("").filter(el => el >= "a" && el <= "z").join("")
+//         console.log(part)
+//         const secondPart = str.slice(index + 1)
+//         console.log(secondPart)
+//         let newResult = ""
+//         for(i = 0; i < counter; i++ ){
+//             newResult += part
+//         }
+//         return newResult + secondPart
+//     }else{
+//         return result
+//     }
+// }
+
+// console.log(stringTask("13[cx]ker"))
+
+// Write a JavaScript function that format a number in a human-readable string with the correct suffix, such as 1st, 2nd, 3rd, etc.
+// Test Data :
+// console.log(humanize_format());
+// console.log(humanize_format(1));
+// console.log(humanize_format(8));
+// console.log(humanize_format(301));
+// console.log(humanize_format(402));
+// "1st"
+// "8th"
+// "301st"
+// "402nd"
+
+// function humanize_format(number){
+//     if(number.toString().split("").slice(-1).join("").includes("1") 
+//         && number.toString().split("").slice(-2).join("") !== "11"){
+//         return number.toString() + "st"
+//     }else if (number.toString().split("").slice(-1).join("").includes("2")
+//         && number.toString().split("").slice(-2).join("") !== "12"){
+//         return number.toString() + "nd"
+//     }
+//     else{
+//         return number.toString() + "th"
+//     }
+// }
